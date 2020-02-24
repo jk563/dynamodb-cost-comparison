@@ -29,14 +29,16 @@
         width: 20%;
         height: 92%;
         float: left;
+        border-right-style: double;
+        border-right-width: medium;
+        border-right-color: #ff9000;
       }
-        .left-column h2:last-of-type, .left-column h3:last-child {
+        .navi h2:last-of-type, .navi h3:last-child {
           color: #000;
         }
       .content {
         width: 75%;
         float: right;
-        padding-top: 1em;
       }
     </style>
   </head>
@@ -60,28 +62,142 @@ class: center
 # Overview
 #### What DynamoDB Is
 #### DynamoDB Pricing
-##### - Provisioned
-##### - On-Demand
 #### Tips
 #### Questions
-
-???
-
-- Rough count of people familiar with DynamoDB to judge pace
 
 ---
 
 .navi[#### Overview
 #### .orange[What DynamoDB Is]
 #### DynamoDB Pricing
-##### Provisioned
-##### On-Demand
 #### Tips
 #### Questions
 ]
 
 .content[
-- It's this thing
+&nbsp;
+]
+
+.content[&nbsp;]
+
+.content[
+.center[What DynamoDB Is]
+---
+]
+
+---
+
+.navi[#### Overview
+#### .orange[What DynamoDB Is]
+#### DynamoDB Pricing
+#### Tips
+#### Questions
+]
+
+.content[
+.center[Key-Value and Document Database]
+]
+
+--
+
+.content[
+.center[AWS Managed Service]
+]
+
+--
+
+.content[
+.center[Automatically Scales]
+]
+
+--
+
+.content[
+.center[Can be relatively cheap]
+]
+
+--
+
+.content[
+.center[Fast (<10ms)]
+]
+
+---
+
+.navi[#### Overview
+#### .orange[What DynamoDB Is]
+#### DynamoDB Pricing
+#### Tips
+#### Questions
+]
+
+.content[&nbsp;]
+.content[
+Items in DynamoDB look like this:
+```
+{
+    "Title": "The Rainmaker",
+    "Formats": {
+        "Hardcover": "J4SUKVGU",
+        "Paperback": "D7YF4FCX"
+    },
+    "Author": "John Grisham",
+    "Category": "Suspense"
+}
+```
+]
+
+---
+
+.navi[#### Overview
+#### What DynamoDB Is
+#### .orange[DynamoDB Pricing]
+#### Tips
+#### Questions
+]
+
+.content[
+&nbsp;
+]
+
+.content[&nbsp;]
+
+.content[
+.center[DynamoDB Pricing]
+---
+]
+
+---
+
+.navi[#### Overview
+#### What DynamoDB Is
+#### .orange[DynamoDB Pricing]
+#### Tips
+#### Questions
+]
+
+.content[
+There are two pricing structures:
+]
+
+--
+
+.content[
+- Provisioned Capacity
+]
+
+--
+
+.content[
+- On-Demand
+]
+
+--
+
+.content[&nbsp;]
+
+.content[
+.center[The right pricing structure will depend on your workload]
 ]
 
 ---
@@ -96,7 +212,166 @@ class: center
 ]
 
 .content[
-- Provisioned
+&nbsp;
+]
+
+.content[
+&nbsp;
+]
+
+.content[
+.center[Provisioned Capacity]
+---
+]
+
+---
+
+.navi[#### Overview
+#### What DynamoDB Is
+#### .orange[DynamoDB Pricing]
+##### .orange[Provisioned]
+##### On-Demand
+#### Tips
+#### Questions
+]
+
+.content[
+&nbsp;
+]
+
+.content[
+---
+.center[Provisioned Capacity is a reservation of throughput measured in Write Capacity Units (WCUs) and Read Capacity Units (RCUs)]
+
+---
+]
+
+--
+
+.content[
+&nbsp;
+]
+
+.content[
+---
+.center[Capacity Units determine the number and size of requests that you can make on the table per second before the service will throttle]
+
+---
+]
+
+---
+
+.navi[#### Overview
+#### What DynamoDB Is
+#### .orange[DynamoDB Pricing]
+##### .orange[Provisioned]
+##### On-Demand
+#### Tips
+#### Questions
+]
+
+.content[
+.center[1 WCU = 1 Write Request up to 1KB in size per Second]
+
+---
+]
+
+--
+
+.content[&nbsp;]
+
+.content[
+Examples:
+
+.center[5 writes of 1KB per second = 5 WCUs]
+]
+
+--
+
+.content[
+.center[5 writes of 2KB per second = 10 WCUs]
+]
+
+--
+
+.content[
+.center[1 write of 5KB per second = 5 WCUs]
+]
+
+---
+
+.navi[#### Overview
+#### What DynamoDB Is
+#### .orange[DynamoDB Pricing]
+##### .orange[Provisioned]
+##### On-Demand
+#### Tips
+#### Questions
+]
+
+.content[&nbsp;]
+
+.content[
+.center[0.5 RCU = 1 Read Request up to 4KB in size per Second (Eventually Consistent)]
+]
+
+--
+
+.content[
+.center[OR]
+
+.center[1 RCU = 1 Read Request up to 4KB in size per Second (Strongly Consistent)]
+]
+
+--
+
+.content[
+.center[OR]
+
+.center[2 RCUs = 1 Read Request up to 4KB in size per Second (Transactional)]
+]
+
+---
+
+.navi[#### Overview
+#### What DynamoDB Is
+#### .orange[DynamoDB Pricing]
+##### .orange[Provisioned]
+##### On-Demand
+#### Tips
+#### Questions
+]
+
+.content[&nbsp;]
+
+.content[
+Examples:
+
+.center[6 reads of 4KB per second = 3 RCUs]
+]
+
+--
+
+.content[
+.center[6 reads of 1KB per second = 3 RCUs]
+]
+
+--
+
+.content[
+.center[6 reads of 5KB per second = 6 RCUs]
+]
+
+--
+
+.content[
+.center[2 strongly consistent reads of 8KB per second = 4 RCUs]
+]
+
+--
+
+.content[
+.center[1 transactional read per second of 5KB per second = 4 RCUs]
 ]
 
 ---
@@ -110,33 +385,109 @@ class: center
 #### Questions
 ]
 
-.middle[.center[On-Demand]]
+.content[
+&nbsp;
+]
+
+.content[
+&nbsp;
+]
+
+.content[
+.center[On-Demand]
+---
+]
 
 ---
 
 .navi[#### Overview
 #### What DynamoDB Is
-#### DynamoDB Pricing
+#### .orange[DynamoDB Pricing]
 ##### Provisioned
-##### On-Demand
+##### .orange[On-Demand]
+#### Tips
+#### Questions
+]
+
+.content[&nbsp;]
+
+.content[
+---
+.center[On-Demand is a pay per request model measured in Write Request Units (WRUs) and Read Request Units (RRUs)]
+
+---
+]
+
+--
+
+.content[
+&nbsp;
+]
+
+.content[
+---
+.center[There is no capacity to set, DynamoDB will scale to whatever capacity you need as requests ramp up - the starting capacity is 2,000 WRUs and 6000 RRUs (though it can handle double this immediately)]
+
+---
+]
+
+---
+
+.navi[#### Overview
+#### What DynamoDB Is
+#### .orange[DynamoDB Pricing]
+##### Provisioned
+##### .orange[On-Demand]
+#### Tips
+#### Questions
+]
+
+.content[
+.center[1 WRU = 1 Write Request up to 1KB in size]
+
+---
+]
+
+--
+
+.content[
+.center[0.5 RRU = 1 Read Request up to 4KB in size (Eventually Consistent)]
+]
+
+--
+
+.content[
+.center[OR]
+
+.center[1 RRU = 1 Read Request up to 4KB in size (Strongly Consistent)]
+]
+
+--
+
+.content[
+.center[OR]
+
+.center[2 RRUs = 1 Read Request up to 4KB in size (Transactional)]
+]
+
+
+---
+.navi[#### Overview
+#### What DynamoDB Is
+#### DynamoDB Pricing
 #### .orange[Tips]
 #### Questions
 ]
 
-.middle[
 .content[
 - Use On-Demnad
 ]
-]
 
 ---
-class: middle
 
 .navi[#### Overview
 #### What DynamoDB Is
 #### DynamoDB Pricing
-##### Provisioned
-##### On-Demand
 #### Tips
 #### .orange[Questions]
 ]
@@ -152,7 +503,9 @@ class: middle
               var url = this;
                 return '<img src="' + url + '" style="width: ' + percentage + '" />';
         };
-      var slideshow = remark.create();
+      var slideshow = remark.create({
+  highlightLanguage: 'javascript',
+  highlightStyle: 'dark'});
     </script>
   </body>
 </html>
