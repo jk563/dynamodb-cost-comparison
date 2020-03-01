@@ -470,6 +470,49 @@ Examples:
 .center[2 RRUs = 1 Read Request up to 4KB in size (Transactional)]
 ]
 
+---
+
+.navi[#### Overview
+#### What DynamoDB Is
+#### .orange[DynamoDB Pricing]
+##### Provisioned
+##### .orange[On-Demand]
+#### Examples
+#### Questions
+]
+
+.content[&nbsp;]
+
+.content[
+Examples:
+
+.center[6 reads of 4KB = 3 RRUs]
+]
+
+--
+
+.content[
+.center[6 reads of 1KB = 3 RRUs]
+]
+
+--
+
+.content[
+.center[6 reads of 5KB = 6 RRUs]
+]
+
+--
+
+.content[
+.center[2 strongly consistent reads of 8KB = 4 RRUs]
+]
+
+--
+
+.content[
+.center[1 transactional read of 5KB = 4 RRUs]
+]
+
 
 ---
 
@@ -497,9 +540,124 @@ Examples:
 #### What DynamoDB Is
 #### DynamoDB Pricing
 #### .orange[Examples]
+##### .orange[Consistent Load]
+##### Daily Spike
 #### Questions
 ]
 
+.content[#### Consistent Load
+&lt;4KB items written ~100 per second and read ~8000 eventually consistent per second throughout the month
+]
+
+--
+
+.content[
+Provisioned Writes: 400 WCUs for load + headroom = 440 WCUs  
+Provisioned Reads: 4000 RCUs for load + headroom = 4400 RCUs
+]
+
+--
+
+.content[
+On-Demand Writes: 262,800,000 WRUs  
+On-Demand Reads: 10,512,000,000 RRUs
+]
+
+---
+
+.navi[#### Overview
+#### What DynamoDB Is
+#### DynamoDB Pricing
+#### .orange[Examples]
+##### .orange[Consistent Load]
+##### Daily Spike
+#### Questions
+]
+
+.content[
+#### Provisioned Pricing (eu-west-1)
+$0.000735 per WCU per hour. Monthly Cost = $236.08  
+$0.000147 per RCU per hour. Monthly cost = $472.16  
+
+Total Monthly Cost = $708.25
+]
+
+--
+
+.content[
+#### On-Demand Pricing (eu-west-1)
+$1.4135 per million WRUs. Monthly Cost = $371.47  
+$0.283 RRUs. Monthly cost = $2,974.90  
+
+Total Monthly Cost = $3,346.37
+]
+
+---
+
+.navi[#### Overview
+#### What DynamoDB Is
+#### DynamoDB Pricing
+#### .orange[Examples]
+##### Consistent Load
+##### .orange[Daily Spike]
+#### Questions
+]
+
+.content[#### Daily Spike
+&lt;4KB items written ~100 per second and read ~8000 eventually consistent per second for 1 hour per day, 1 write and 80 reads per second for the rest of the day
+]
+
+--
+
+.content[
+Provisioned Writes: 400 WCUs for peak load + headroom = 440 WCUs  
+Provisioned Reads: 4000 RCUs for peak load + headroom = 4400 RCUs
+]
+
+--
+
+.content[
+On-Demand Writes: 13,468,500 WRUs  
+On-Demand Reads: 639,480,000 RRUs
+]
+
+---
+
+.navi[#### Overview
+#### What DynamoDB Is
+#### DynamoDB Pricing
+#### .orange[Examples]
+##### Consistent Load
+##### .orange[Daily Spike]
+#### Questions
+]
+
+.content[
+#### Provisioned Pricing (eu-west-1)
+$0.000735 per WCU per hour. Monthly Cost = $236.08  
+$0.000147 per RCU per hour. Monthly cost = $472.16  
+
+Total Monthly Cost = $708.25
+]
+
+--
+
+.content[
+#### On-Demand Pricing (eu-west-1)
+$1.4135 per million WRUs. Monthly Cost = $19.04  
+$0.283 RCUs. Monthly cost = $180.97  
+
+Total Monthly Cost = $200.01
+]
+
+---
+
+.navi[#### Overview
+#### What DynamoDB Is
+#### DynamoDB Pricing
+#### .orange[Examples]
+#### Questions
+]
 
 .content[
 &nbsp;
@@ -521,7 +679,7 @@ Examples:
 --
 
 .content[
-.center[- Do the maths]
+.center[- Do the maths. 1 WCU/RCU ~= 380,000 WRU/RRU]
 ]
 
 ---
