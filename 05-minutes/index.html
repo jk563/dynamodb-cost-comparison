@@ -4,10 +4,18 @@
     <title>Title</title>
     <meta charset="utf-8">
         <style>
+
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
       h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
       }
 
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
 
       .pull-right {
         float: right;
@@ -136,12 +144,12 @@ class: center
 Items in DynamoDB look like this:
 ```
 {
+    "Author": "John Grisham",
     "Title": "The Rainmaker",
     "Formats": {
         "Hardcover": "J4SUKVGU",
         "Paperback": "D7YF4FCX"
     },
-    "Author": "John Grisham",
     "Category": "Suspense"
 }
 ```
@@ -546,7 +554,7 @@ Examples:
 ]
 
 .content[#### Consistent Load
-&lt;4KB items written ~100 per second and read ~8000 eventually consistent per second throughout the month
+&lt;4KB items ~100 writes per second and ~8000 eventually consistent reads per second throughout the month
 ]
 
 --
@@ -604,7 +612,7 @@ Total Monthly Cost = $3,346.37
 ]
 
 .content[#### Daily Spike
-&lt;4KB items written ~100 per second and read ~8000 eventually consistent per second for 1 hour per day, 1 write and 80 reads per second for the rest of the day
+&lt;4KB items ~100 writes per second and ~8000 eventually consistent reads per second for 1 hour per day, 1 write and 80 reads per second for the rest of the day
 ]
 
 --
@@ -660,7 +668,6 @@ Total Monthly Cost = $200.01
 ]
 
 .content[
-&nbsp;
 .center[- Use Provisioned for predictable workloads without large spikes]
 ]
 
@@ -668,12 +675,6 @@ Total Monthly Cost = $200.01
 
 .content[
 .center[- Use On-Demand for spiky, unpredicatable, or low-volume  workloads. A majority of workloads I see fall under this pattern]
-]
-
---
-
-.content[
-.center[- Beware GSIs. They can throttle provisioned tables]
 ]
 
 --
